@@ -1,0 +1,148 @@
+{% extends "home.html" %}
+{% block content %}
+    <div style="margin-top: 50px;margin-left: 20px; width: 100%">
+        <div style="width: 100%">
+            <form class="form-horizontal" action="/status/" method="post">
+                <input type="text" style="display: none" name="user_id" value="{{ user_info.id }}">
+                <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                    <p class="bg-primary"
+                       style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">1</p>
+                    <span style="padding-left: 5px;font-size: 30px;">护照信息</span>
+                </div>
+                {% csrf_token %}
+                  <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label  class="col-sm-2 control-label">种质编号</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" style="padding-left: 3px;">{{ user_info.seed_num }}</p>
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label for="inputEmail3" class="col-sm-2 control-label">种质名称</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" style="padding-left: 3px;">{{ user_info.seed_name }}</p>
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label for="inputEmail3" class="col-sm-2 control-label">科名</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" style="padding-left: 3px;">{{ user_info.ke_num }}</p>
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label class="col-sm-2 control-label">属名</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" style="padding-left: 3px;">{{ user_info.shu_num }}</p>
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label for="inputEmail3" class="col-sm-2 control-label" style="">种名或亚种名</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" style="padding-left: 3px;">{{ user_info.ya_num }}</p>
+                    </div>
+                </div>
+
+
+                <div style="width: 100%">
+                    <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                        <p class="bg-primary"
+                           style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">
+                            2</p>
+                        <span style="padding-left: 5px;font-size: 30px;">资源图片</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        {% for item in obj %}
+                            <img width="200px" height="150px" src={{ item }} />
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+                <div style="width: 100% ;margin-top: 20px;">
+                    <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                        <p class="bg-primary"
+                           style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">
+                            3</p>
+                        <span style="padding-left: 5px;font-size: 30px;">基本描述信息</span>
+                    </div>
+                    <div>
+                        <div>
+                            <label class="need_label">主要特性</label>
+
+                            <input disabled="true"  type="text" class="need_box" value="{{ user_info.character }}" name="character" placeholder="主要特性" />
+                            <label class="need_label">主要用途</label>
+                            <input disabled="true" type="text" class="need_box" value="{{ user_info.main_use }}" name="main_use" placeholder="主要用途" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">气候带</label>
+                            <input disabled="true" type="text" class="need_box" value="{{ user_info.climate }}" name="climate" placeholder="气候带" />
+                            <label class="need_label">生长习性</label>
+                            <input disabled="true" type="text" style="width: 450px;" class="need_box" value="{{ user_info.live }}" name="live" placeholder="生长习性" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">开花结实特性</label>
+                            <input disabled="true" type="text" class="need_box" name="flower" value="{{ user_info.flower }}" placeholder="开花结实特性" />
+                            <label class="need_label">特征特性</label>
+                            <input disabled="true" type="text" style="width: 450px;" class="need_box" value="{{ user_info.feature }}" name="feature" placeholder="特征特性" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">具体用途</label>
+                            <input disabled="true" type="text" style="width: 865px;" class="need_box" value="{{ user_info.seed_use }}" name="seed_use" placeholder="具体用途" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">观测地点</label>
+                            <input disabled="true" type="text" class="need_box" value="{{ user_info.watch_place }}" name="watch_place" placeholder="观测地点" />
+                            <label class="need_label">繁殖方式</label>
+                            <input disabled="true" type="text"  class="need_box" name="breed" value="{{ user_info.breed }}" placeholder="繁殖方式" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">育成年份</label>
+                            <input disabled="true" type="text" class="need_box" name="grow_year" value="{{ user_info.grow_year }}" placeholder="育成年份" />
+                        </div>
+                    </div>
+
+
+                </div>
+                <div style="width: 100% ;margin-top: 20px;">
+                    <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                        <p class="bg-primary"
+                           style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">
+                            4</p>
+                        <span style="padding-left: 5px;font-size: 30px;">资源保存信息</span>
+                    </div>
+                    <div>
+                        <div>
+                            <label class="need_label">保存时间</label>
+                            <input disabled="true" type="text" class="need_box" value="{{ user_info.save_year }}" name="save_year" placeholder="保存时间" />
+                            <label class="need_label">海拔</label>
+                            <input disabled="true" type="text" class="need_box" value="{{ user_info.altitude }}" name="altitude" placeholder="海拔" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">坡度</label>
+                            <input disabled="true" type="text" class="need_box" value="{{ user_info.podu }}" name="podu" placeholder="坡度" />
+                            <label class="need_label">坡向</label>
+                            <input disabled="true" type="text" style="width: 450px;" class="need_box" value="{{ user_info.poxiang }}" name="poxiang" placeholder="坡向" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">GPS-X</label>
+                            <input disabled="true" type="text" style="width: 90px;" class="need_box" value="{{ user_info.gps_x }}" name="gps_x" placeholder="经度" />
+                            <label style="margin-left: -40px;" class="need_label">GPS-Y</label>
+                            <input disabled="true" type="text" style="width: 90px;" class="need_box" value="{{ user_info.gps_y }}" name="gps_y" placeholder="纬度" />
+                            <label class="need_label">土壤类型</label>
+                            <input disabled="true" type="text" class="need_box" value="{{ user_info.soil_type }}" name="soil_type" placeholder="土壤类型" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 50px; margin-bottom: 100px; margin-left: 10%;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button name="your_succeed" style="width: 150px;height: 50px;" type="submit" class="btn btn-default">审核通过</button>
+                      <button name="your_fail" style="width: 150px;height: 50px;"  class="btn btn-default"><a style="text-decoration: none;" href="/auditer/">审核未通过</a></button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}

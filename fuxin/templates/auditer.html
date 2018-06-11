@@ -1,0 +1,41 @@
+{% extends "home.html" %}
+{% block content %}
+<div style="height: 500px;width: 800px;margin-top: 20px;margin-left: 20px; ">
+    <div style="width: 200px; height: 50px">
+            <span style="font-size: 20px;color: #345bb8; display: inline-block ;text-align: center ;line-height: 30px;">首页/种质审核</span>
+        </div>
+      <div class="block" style="height: 360px;">
+        <div id="tablewidget" class="block-body collapse in">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>种质编号</th>
+                  <th>种质名称</th>
+                  <th>科名</th>
+                  <th>属名</th>
+                  <th>种名或亚种名</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in data %}
+                <tr name="{{ i.id }}">
+                  <td>{{i.seed_num}}</td>
+                  <td>{{i.seed_name}}</td>
+                  <td>{{i.ke_name}}</td>
+                  <td>{{i.shu_name}}</td>
+                  <td>{{i.ya_name}}</td>
+                  <td>
+                      <label style="text-align:center;display: inline-block; padding:6px;background-color: #e3e3e3;width: 60px;"><a style="text-decoration: none;color: black;font-size: 12px;"  href="/auditer-{{ i.id }}.html/">审核</a></label>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <ul class="pagination pagination-sm">
+        {{ page_obj.page_str|safe }}
+      </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends "home.html" %}
+{% block content %}
+    <div style="margin-top: 50px;margin-left: 20px; width: 100%">
+        <div style="width: 100%">
+
+            <form class="form-horizontal" action="/addseed/" method="post" enctype="multipart/form-data">
+                <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                    <p class="bg-primary"
+                       style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">1</p>
+                    <span style="padding-left: 5px;font-size: 30px;">护照信息</span>
+                </div>
+                {% csrf_token %}
+                  <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label  class="col-sm-2 control-label">种质编号</label>
+                    <div class="col-sm-10">
+                        <input type="text" style="width: 250px;" class="form-control" name="seed_num"
+                               placeholder="种质编号">
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label for="inputEmail3" class="col-sm-2 control-label">种质名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" style="width: 250px;" class="form-control" name="seed_name"
+                               placeholder="种质名称">
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label for="inputEmail3" class="col-sm-2 control-label">科名</label>
+                    <div class="col-sm-10">
+                        <input type="text" style="width: 250px;" class="form-control" name="ke_name" placeholder="科名">
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label class="col-sm-2 control-label">属名</label>
+                    <div class="col-sm-10">
+                        <input type="text" style="width: 250px;" class="form-control" name="shu_name" placeholder="属名">
+                    </div>
+                </div>
+                <div class="form-group" style="border-bottom: 1px dotted #E8E8E8">
+                    <label for="inputEmail3" class="col-sm-2 control-label" style="">种名或亚种名</label>
+                    <div class="col-sm-10">
+                        <input type="text" style="width: 250px;" class="form-control" name="ya_name"
+                               placeholder="种名或亚种名">
+                    </div>
+                </div>
+
+
+                <div style="width: 100%">
+                    <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                        <p class="bg-primary"
+                           style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">
+                            2</p>
+                        <span style="padding-left: 5px;font-size: 30px;">资源图片</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <span style="margin-left: 50px;" class="btn btn-success fileinput-button">
+                            <span>上传图片一</span>
+                            <input type="file" name="image">
+                        </span>
+                        <span class="btn btn-success fileinput-button">
+                            <span>上传图片二</span>
+                            <input type="file" name="image">
+                        </span>
+                        <span class="btn btn-success fileinput-button">
+                            <span>上传图片三</span>
+                            <input type="file" name="image">
+                        </span>
+                        <span class="btn btn-success fileinput-button">
+                            <span>上传图片四</span>
+                            <input type="file" name="image">
+                        </span>
+                    </div>
+
+
+                </div>
+                <div style="width: 100% ;margin-top: 20px;">
+                    <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                        <p class="bg-primary"
+                           style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">
+                            3</p>
+                        <span style="padding-left: 5px;font-size: 30px;">基本描述信息</span>
+                    </div>
+                    <div>
+                        <div>
+                            <label class="need_label">主要特性</label>
+                            <input type="text" class="need_box" name="character" placeholder="主要特性" />
+                            <label class="need_label">主要用途</label>
+                            <input type="text" class="need_box" name="main_use" placeholder="主要用途" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">气候带</label>
+                            <input type="text" class="need_box" name="climate" placeholder="气候带" />
+                            <label class="need_label">生长习性</label>
+                            <input type="text" style="width: 450px;" class="need_box" name="live" placeholder="生长习性" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">开花结实特性</label>
+                            <input type="text" class="need_box" name="flower" placeholder="开花结实特性" />
+                            <label class="need_label">特征特性</label>
+                            <input type="text" style="width: 450px;" class="need_box" name="feature" placeholder="特征特性" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">具体用途</label>
+                            <input type="text" style="width: 865px;" class="need_box" name="seed_use" placeholder="具体用途" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">观测地点</label>
+                            <input type="text" class="need_box" name="watch_place" placeholder="观测地点" />
+                            <label class="need_label">繁殖方式</label>
+                            <input type="text"  class="need_box" name="breed" placeholder="繁殖方式" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">育成年份</label>
+                            <input type="text" class="need_box" name="grow_year" placeholder="育成年份" />
+                        </div>
+                    </div>
+
+
+                </div>
+                <div style="width: 100% ;margin-top: 20px;">
+                    <div style="background: url(/static/myimage/plant_titleEditLine.png)">
+                        <p class="bg-primary"
+                           style="display:inline-block;text-align: center;line-height: 25px; width: 70px;height: 25px">
+                            4</p>
+                        <span style="padding-left: 5px;font-size: 30px;">资源保存信息</span>
+                    </div>
+                    <div>
+                        <div>
+                            <label class="need_label">保存时间</label>
+                            <input type="text" class="need_box" name="save_year" placeholder="保存时间" />
+                            <label class="need_label">海拔</label>
+                            <input type="text" class="need_box" name="altitude" placeholder="海拔" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">坡度</label>
+                            <input type="text" class="need_box" name="podu" placeholder="坡度" />
+                            <label class="need_label">坡向</label>
+                            <input type="text" style="width: 450px;" class="need_box" name="poxiang" placeholder="坡向" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="need_label">GPS-X</label>
+                            <input type="text" style="width: 90px;" class="need_box" name="gps_x" placeholder="经度" />
+                            <label style="margin-left: -40px;" class="need_label">GPS-Y</label>
+                            <input type="text" style="width: 90px;" class="need_box" name="gps_y" placeholder="纬度" />
+                            <label class="need_label">土壤类型</label>
+                            <input type="text" class="need_box" name="soil_type" placeholder="土壤类型" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 50px; margin-bottom: 100px; margin-left: 30%;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button style="width: 150px;height: 50px;" type="submit" class="btn btn-default">提交</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}

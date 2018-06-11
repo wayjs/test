@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Title</title>
+</head>
+    <script src="/static/slide_menu/js/adapter.js"></script> <!--rem适配js-->
+    <link rel="stylesheet" href="/static/slide_menu/css/base.css"> <!--初始化文件-->
+    <link rel="stylesheet" href="/static/slide_menu/css/menu.css"> <!--主样式-->
+<style>
+
+    body {
+        margin: 0 auto;
+        width: 100%;
+        background-color: #eeeeee;
+    }
+    .top_div {
+        height: 200px;
+        width: 100%;
+    }
+    .content_div{
+        width: 920px;
+        height: 410px;
+        position:fixed;
+        top:50%;
+        left:50%;
+        margin-top:-155px;
+        margin-left:-460px;
+        background: white url(/static/myimage/login_bk.jpg) no-repeat center left 50% ;
+        text-align: center;
+    }
+    .input_content{
+        width: 400px;
+        height: 200px;
+        position:fixed;
+        top:50%;
+        left:50%;
+        margin-top:-50px;
+        margin-left:-200px;
+        border:1px black solid;
+        position: relative;
+        background-color: white;
+    }
+    .label_c{
+        display: inline-block;
+    }
+    .span_error{
+        color: red;
+    }
+
+</style>
+<body>
+    <div>
+        <div class="top_div">
+            <img src="/static/myimage/logo.png" />
+        </div>
+        <div class="content_div">
+                <div class="input_content">
+                    <div style="margin-left:80px;text-align: center">
+                        <form action="/login/" method="post" novalidate onsubmit="return checkform()">
+                             {% csrf_token %}
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p><label class="label_c" for="my_name">用户名：</label><input type="text" name="username" id="my_name" onblur="checkusername()" onfocus="remove_error1()" /></p>
+                                    </td>
+                                    <td>
+                                        <span class="span_error" id="error1"></span>
+                                        {%  if error_user  %}
+                                            <span style="color:red;" id="error_my_user">{{ error_user}}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><label class="label_c" for="my_pwd">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input type="password" name="pwd" id="my_pwd" onblur="checkpwd()" onfocus="remove_error2()" /></p>
+                                    </td>
+                                    <td style="width: 80px;">
+                                        <span class="span_error" id="error2"></span>
+                                        {%  if error_pwd  %}
+                                            <span style="color:red;" id="error_my_pwd">{{ error_pwd}}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <p >
+                                             <input style="width: 60px; background-color: #5a98de; margin-left: 50px" type="submit" value="登陆"/>
+                                             <input style="width: 60px; background-color: #5a98de ;margin-left: 10px;" type="reset" value="重置"/>
+                                         </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="/static/jquery-1.12.4.js"></script>
+    <script>
+        function checkusername()
+        {
+          var username = document.getElementById("my_name").value.length;
+          if(username < 1||username>12)
+          {
+            document.getElementById("error1").innerHTML = "<font color='red'>必填</font>";
+            return false;
+          }else{
+            return true;
+          }
+        }
+    function checkpwd()
+    {
+
+      var my_pwd = document.getElementById("my_pwd").value.length;
+      if(my_pwd<=0)
+      {
+         document.getElementById("error2").innerHTML = "<font color='red'>必填</font>";
+        return false;
+      }else{
+        return true;
+      }
+    }
+     function checkform() {
+
+         document.getElementById("error_my_pwd").innerText=""
+         checkusername();
+         checkpwd();
+         if (checkusername() && checkpwd()) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+     function remove_error1() {
+            document.getElementById("error_my_user").innerText=""
+     }
+     function remove_error2() {
+            document.getElementById("error_my_pwd").innerText=""
+     }
+    </script>
+</body>
+</html>
